@@ -9,4 +9,12 @@ public class urinalsTest {
         System.out.println("====== GNANADEEP SETTYKARA == TEST ONE EXECUTED =======");
         Assertions.assertFalse(ex);
         }
+
+    @Test
+    void testTwo() {
+        MenUrinals mu = new MenUrinals();
+        Integer i = mu.countUrinals("1000");
+        System.out.println("====== GNANADEEP SETTYKARA == TEST TWO EXECUTED =======");
+        Assertions.assertEquals(1,i);
+    }    
     }

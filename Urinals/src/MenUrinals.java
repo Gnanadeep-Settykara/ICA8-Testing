@@ -5,13 +5,15 @@ public class MenUrinals {
 
     }
 
-    public Integer countUrinals(String s)
+    public Integer countUrinals(String st)
     {
+        System.out.println("Implementation is not yet completed");
         return 0;
     }
 
     public String getString()
     {
+
         return null;
     }
 
