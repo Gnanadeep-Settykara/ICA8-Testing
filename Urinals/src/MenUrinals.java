@@ -7,9 +7,50 @@ public class MenUrinals {
 
     public Integer countUrinals(String st)
     {
-        System.out.println("Implementation is not yet completed");
-        return 0;
+        //System.out.println("Implementation is not yet completed");
+        boolean validity= goodString(st);
+        if(!validity)
+            return -1;
+        String[] str=st.split("");
+        int c=0; int len=str.length;
+        int[] check =new int[len];
+        for(int i=0;i<len;i++)
+        {
+            check[i]=Integer.parseInt(String.valueOf(str[i]));
+        }
+        if(len==1)
+        {
+            if(check[0]==0)
+            {
+                c=1;
+                check[0]=1;
+            }
+        }
+        else
+        {
+            int i=0;
+            if(check[i]==0 && check[i+1]!=1)
+            {
+                check[i] = 1;
+                c++;
+            }
+            for(i=1;i<len-1;i++)
+            {
+                if(check[i]==0 && check[i-1]!=1 && check[i+1]!=1)
+                {
+                    check[i]=1;
+                    c++;
+                }
+            }
+            if(check[i]==0&&check[i-1]!=1)
+            {
+                c++;
+                check[i] = 1;
+            }
+        }
+        return c;
     }
+
 
     public String getString()
     {
