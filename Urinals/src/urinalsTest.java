@@ -22,9 +22,17 @@ public class urinalsTest {
     }
 
     @Test
-    void testThree() throws IOException {
-        MenUrinals mu = new MenUrinals();
+    void testThree(){
+        MenUrinals mu= new MenUrinals();
+        Assertions.assertEquals(1,mu.openFile("src/urinal.dat"));
         System.out.println("====== GNANADEEP SETTYKARA == TEST THREE EXECUTED =======");
-        Assertions.assertEquals(false, mu.openFile("src/urinals.dat"));
+    }
+
+    @Test
+    public void testWriteToFile(){
+        String append="src/rule.txt";
+        MenUrinals mu= new MenUrinals();
+        Assertions.assertEquals(1,mu.writeToFile(append,3));
+        System.out.println("====== GNANADEEP SETTYKARA == TEST FOUR EXECUTED =======");
     }
     }

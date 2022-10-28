@@ -1,29 +1,50 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class MenUrinals {
 
-    public boolean openFile(String p) {
-        //System.out.println("Implementation is not yet completed");
-        try
-        {
-            FileReader file = new FileReader(new File(p));
-            BufferedReader br = new BufferedReader(file);
-            String line = br.readLine();
-            System.out.println(line);
-            System.out.println("Urinals count : " + countUrinals(line));
+    public int openFile(String path) {
+        try{
 
-            while (line != null) {
-                line = br.readLine();
-                if(line.equals("-1")){
+            //Read from input file
+            File file=new File(path);
+            if(file==null)
+                throw new IOException();
+            //opening file to get the counter
+            File cfile=new File("src/increment.txt");
+            if(cfile==null)
+                throw new IOException();
+            Scanner c=new Scanner(cfile);
+            int counter=Integer.parseInt(c.nextLine());
+            //getting the output file
+            String outputfile="src/rule.txt";
+            if(counter!=0)
+                outputfile="src/rule"+counter+".txt";
+            //reading input file
+            Scanner sc=new Scanner(file);
+            while(sc.hasNextLine()){
+                String s=sc.nextLine();
+                if(s.equals("-1"))
                     break;
-                }
-                System.out.println(line);
-                System.out.println("Urinals count : " + countUrinals(line));
+                int vacancies= countUrinals(s);
+                writeToFile(outputfile,vacancies);
+
             }
-            return true;
+            //increment the counter for next output file
+            FileWriter cwriter=new FileWriter("src/increment.txt");
+            if(cwriter==null)
+                throw new IOException();
+            cwriter.write(Integer.toString(counter+1));
+            cwriter.close();
+
+            System.out.println("Successfully written output to "+outputfile);
+            return 1;
         }
-        catch (IOException ex) {
-            return false;
+        catch(IOException e)
+        {
+            System.out.println("Error in opening file");
+            e.printStackTrace();
+            return 0;
         }
     }
 
@@ -100,5 +121,25 @@ public class MenUrinals {
         return true;
     }
 
+    public int writeToFile(String outputfile,int vacancies){
+        try {
+            FileWriter writer = new FileWriter(outputfile, true);
+            if(writer==null)
+                throw new IOException();
+            BufferedWriter bw=new BufferedWriter(writer);
+            if(bw==null)
+                throw new IOException();
+
+            bw.write(Integer.toString(vacancies));
+            bw.newLine();
+            bw.close();
+            return 1;
+        }
+        catch(IOException e){
+            System.out.println("Error in opening the output file!");
+            e.printStackTrace();
+            return 0;
+        }
+        }
 
 }
