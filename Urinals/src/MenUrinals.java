@@ -1,9 +1,30 @@
+import java.io.*;
+
 public class MenUrinals {
 
-    public boolean openFile()
-    {
-        System.out.println("Implementation is not yet completed");
-        return true;
+    public boolean openFile(String p) {
+        //System.out.println("Implementation is not yet completed");
+        try
+        {
+            FileReader file = new FileReader(new File(p));
+            BufferedReader br = new BufferedReader(file);
+            String line = br.readLine();
+            System.out.println(line);
+            System.out.println("Urinals count : " + countUrinals(line));
+
+            while (line != null) {
+                line = br.readLine();
+                if(line.equals("-1")){
+                    break;
+                }
+                System.out.println(line);
+                System.out.println("Urinals count : " + countUrinals(line));
+            }
+            return true;
+        }
+        catch (IOException ex) {
+            return false;
+        }
     }
 
     public Integer countUrinals(String st)

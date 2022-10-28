@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
 public class urinalsTest {
     
     @Test
@@ -19,9 +22,9 @@ public class urinalsTest {
     }
 
     @Test
-    void testThree() {
+    void testThree() throws IOException {
         MenUrinals mu = new MenUrinals();
         System.out.println("====== GNANADEEP SETTYKARA == TEST THREE EXECUTED =======");
-        Assertions.assertFalse(mu.openFile());
+        Assertions.assertEquals(false, mu.openFile("src/urinals.dat"));
     }
     }
