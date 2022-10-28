@@ -1,8 +1,9 @@
 public class MenUrinals {
 
-    public void openFile()
+    public boolean openFile()
     {
-
+        System.out.println("Implementation is not yet completed");
+        return true;
     }
 
     public Integer countUrinals(String st)

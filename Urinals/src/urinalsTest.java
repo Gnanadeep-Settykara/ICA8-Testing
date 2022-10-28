@@ -16,5 +16,12 @@ public class urinalsTest {
         Integer i = mu.countUrinals("1000");
         System.out.println("====== GNANADEEP SETTYKARA == TEST TWO EXECUTED =======");
         Assertions.assertEquals(1,i);
-    }    
+    }
+
+    @Test
+    void testThree() {
+        MenUrinals mu = new MenUrinals();
+        System.out.println("====== GNANADEEP SETTYKARA == TEST THREE EXECUTED =======");
+        Assertions.assertFalse(mu.openFile());
+    }
     }
