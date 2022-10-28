@@ -15,9 +15,23 @@ public class MenUrinals {
         return null;
     }
 
-    public Boolean goodString(String s)
+    public Boolean goodString(String st)
     {
-        System.out.println("Implemention is not yet complete");
+        //System.out.println("Implemention is not yet complete");
+        for (int i = 0; i < st.length(); i++)
+        {
+            if (st.charAt(i) != '0' && st.charAt(i) != '1')
+            {
+                return false;
+            }
+            int j=i+1;
+            if (j< st.length())
+            {
+                if (st.charAt(i) == '1' && st.charAt(j) == '1')
+                    return false;
+            }
+
+        }
         return true;
     }
 
